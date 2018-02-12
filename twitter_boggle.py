@@ -19,7 +19,7 @@ auth = OAuth1(consumer_key, consumer_secret, access_token, access_secret)
 
 # generic list of stop words
 stop_words = stopwords.words('english') # from https://pythonspot.com/nltk-stop-words/
-stop_words.extend(['http', 'https', 'RT'])
+stop_words.extend(['http', 'https', 'rt'])
 
 def most_common_shared_words(dicts, count=5):
     common_words = {}
