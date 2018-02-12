@@ -54,6 +54,9 @@ def most_common_words_not_in(d, ignore_list, count):
     return sorted(unique_words, key=lambda x: unique_words[x], reverse=True)[:count] # sort the words by total count between accounts and slice to the count
 
 if __name__ == '__main__':
+    twitter_accounts[0] = input("Enter in a twitter account name to compare: ")
+    twitter_accounts[1] = input("Enter in another twitter account name to compare: ")
+    num_tweets = input("How many tweets should I look at? ")
     freq_list_by_account = {}
     for account in twitter_accounts:
         url = 'https://api.twitter.com/1.1/statuses/user_timeline.json'
