@@ -69,4 +69,11 @@ if __name__ == '__main__':
                 if word.isalpha() and word not in stop_words:
                     tokens.append(word)
         freq_list_by_account[account] = nltk.FreqDist(tokens)
-    print(most_common_shared_words(freq_list_by_account))
+    print("Most common words between {} and {}:".format(twitter_accounts[0], twitter_accounts[1]))
+    for word in most_common_shared_words(freq_list_by_account):
+        print("  " + word)
+    different_words = most_common_different_words(freq_list_by_account)
+    for x in different_words:
+        print("Most common words unique to {}:".format(x))
+        for word in different_words[x]:
+            print("  " + word)
