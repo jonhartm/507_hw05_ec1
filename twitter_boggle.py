@@ -32,6 +32,21 @@ def most_common_shared_words(dicts, count=5):
     common_words = sorted(common_words, key=lambda x: common_words[x], reverse=True)[:count]
     return common_words
 
+def most_common_different_words(dicts, count=5):
+    common_words = most_common_shared_words(dicts, -1)
+    different_words = {}
+    for d in dicts:
+        different_words[d] = most_common_words_not_in(dicts[d], common_words, count)
+    return different_words
+
+def most_common_words_not_in(d, ignore_list, count):
+    unique_words = {}
+    for word in d:
+        if word not in ignore_list:
+            unique_words[word] = d[word]
+    unique_words = sorted(unique_words, key=lambda x: unique_words[x], reverse=True)[:count]
+    return unique_words
+
 if __name__ == '__main__':
     freq_list_by_account = {}
     for account in twitter_accounts:
